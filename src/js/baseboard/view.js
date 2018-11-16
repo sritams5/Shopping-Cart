@@ -113,7 +113,7 @@ class BaseBox {
         </button>
         </div>
 
-        <div class="total-price">$${item.price}</div>
+        <div class="total-price">$${item.price*item.qty}</div>
         </div>
         </div>
         <div class="action2">

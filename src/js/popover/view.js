@@ -37,7 +37,7 @@ class PopBox {
       <select class="dropbutns" id="qtycontent"></select>
       </div>
       </div>
-      <button class="buttons-primary">EDIT</button>
+      <button class="buttons-primary editcss">EDIT</button>
       <p class="subtext" id="showDetailsId"><u>see product details</u></p>
       <p id="pdetailsid" style="display:none;"></p>
       </div>
@@ -61,15 +61,17 @@ class PopBox {
     async addDynaValue(jsonelement){
       let itemObj = JSON.parse(jsonelement);
       console.log(jsonelement+" "+itemObj);
-      document.getElementById('pnameid').innerHTML=itemObj.productname;
-      document.getElementById('priceid').innerHTML=itemObj.price;
-      document.getElementById('imageid').src =itemObj.productimg;
       let sizes=itemObj.size;
       let qtys=itemObj.qtyavailable;
       let choosedsize=itemObj.sizechoosed;
       let qtyChoosed=itemObj.qty;
       let colors=itemObj.color;
       let colorChoosed=itemObj.colorchoosed;
+      document.getElementsByClassName("editcss")[0].id=itemObj.id;
+      document.getElementById('pnameid').innerHTML=itemObj.productname;
+      document.getElementById('priceid').innerHTML=`$${qtyChoosed*itemObj.price}`;
+      document.getElementById('imageid').src =itemObj.productimg;
+
       console.log('qtys'+qtys);
       let sizecontent = document.getElementById('sizecontent');
       sizecontent.innerHTML='';

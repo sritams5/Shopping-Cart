@@ -2,6 +2,7 @@ import 'jquery';
 import 'jquery-ui';
 
 import popBox from './view';
+import {loadPromosPerPromocode} from '../service';
 
 export async function createPopUp() {
   await popBox.createPopOver();
@@ -20,7 +21,15 @@ async function addFunctionalityToPopUp(){
 
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
-
+  let editbutton = document.getElementsByClassName("editcss")[0];
+  editbutton.onclick = function(event) {
+    let id=event.target.id;
+    console.log('id- '+id);
+  //$().html();
+  //$().html();
+  //$().html();
+    modal.style.display = "none";
+  }
   // When the user clicks the button, open the modal
   //btn.onclick = function() {
   //    modal.style.display = "block";
