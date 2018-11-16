@@ -45,7 +45,7 @@ class BaseBox {
     <p>ENTER PROMOTION CODE OR GIFT CARD</p>
     </div>
     <div>
-    <input type="text"></input><button class="transbutn">APPLY</button>
+    <input type="text" id="promocodeid"></input><button class="transbutn" id="promocodeBtn">APPLY</button>
     </div>
     </div>
     <div id="costdiv">

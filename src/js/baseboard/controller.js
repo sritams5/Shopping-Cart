@@ -4,7 +4,7 @@ import 'jquery-ui';
 import baseBox from './view';
 import popView from '../popover/view';
 import {createPopUp,addDynaValue} from '../popover/controller';
-import {loadOrders} from '../service';
+import {loadOrders,loadPromosPerPromocode} from '../service';
 async function showDetails(event) {
     const modal =document.getElementById('myModal');
     let eventid=event.target.id;
@@ -34,11 +34,35 @@ async function calculateTotal(){
 }
 async function createLanding(){
   const orderArray=await loadOrders();
-  console.log(orderArray);
+  //console.log(orderArray);
   await baseBox.createBase(orderArray);
   await createPopUp();
   await calculateTotal();
+  $('.transbutn').on('click',async function(e) {
+    e.preventDefault();
+    let ele=document.getElementById("promocodeid");
+    let pvalue=ele.value;
+    let promoamount=0;
+    console.log(pvalue);
 
+      if(pvalue==""||pvalue==undefined){
+        ele.readOnly = false;
+      }else{
+        ele.readOnly = true;
+        const promoC=await loadPromosPerPromocode(pvalue);
+        if(promoC.length>0){
+          promoamount=promoC[0].amount;
+          console.log(promoamount);
+          $("#promoid").html(`$${promoamount}`);
+          let priceBeforePromo=parseFloat(($("#finalid").html()).split("$")[1]);
+          $("#finalid").html(`$${priceBeforePromo-promoamount}`);
+        }else{
+          ele.value="";
+          ele.readOnly = false;
+          alert("Invalid Promo Code!!!");
+        }
+      }
+    });
   $('.minus-btn').on('click', function(e) {
     e.preventDefault();
     var $this = $(this);

@@ -11,20 +11,33 @@ type: 'GET',
 });
 
 return result;
-  // $.ajax({
-  //       url: "http://localhost:3000/orderlist",
-  //       type: 'GET',
-  //       dataType: 'json', // added data type
-  //       success: function(res) {
-  //         return res;
-  //           //console.log(res);
-  //           //alert(res);
-  //       },error: function(res) {
-  //           // console.log(res);
-  //           // alert(res);
-  //           return res;
-  //       }
-  //   });
+}
+export async function loadPromos(){
+  const result = await $.ajax({
+
+url: `http://localhost:3000/promolist`,
+
+type: 'GET',
+
+// data: {varName : varValue},
+
+});
+
+return result;
+}
+
+export async function loadPromosPerPromocode(promocode){
+  const result = await $.ajax({
+
+url: `http://localhost:3000/promolist?promocode=${promocode}`,
+
+type: 'GET',
+
+// data: {varName : varValue},
+
+});
+
+return result;
 }
 
 function saveBoardsData(boards) {
