@@ -95,21 +95,21 @@ class BaseBox {
         </div>
         <div class="dynadiv" id="dynadiv${item.id}">
         <div class="description" id="description${item.id}">
-        <span>${item.productname}</span>
-        <span>${item.style}</span>
-        <span>${item.color}</span>
-        <span class="actionclass action1"><button id="editBtn${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeBtn${item.id}" class="bglessbutton">X REMOVE</button>|<button id="saveLaterBtn${item.id}" class="bglessbutton">SAVE FOR LATER</button></span>
+        <span><b>${item.productname}</b></span>
+        <span>Style #:${item.style}</span>
+        <span>Colour :${item.colorchoosed}</span>
+        <span class="actionclass action1"><button id="editBtnD${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeDBtn${item.id}" class="bglessbutton">X REMOVE</button>|<button id="saveLaterDBtn${item.id}" class="bglessbutton">SAVE FOR LATER</button></span>
         </div>
         <div class="total-price"><p class="smalldevicep">Size:</p>${item.sizechoosed}</div>
 
         <div class="quantity">
         <p class="smalldevicep">QTY:</p>
-        <button class="plus-btn" type="button" name="button">
-        <img src="plus.svg" alt="" />
+        <button class="plus-btn" type="button" aria-label="pbutton${item.id}">
+        <img src="./img/origin/plus.svg" alt="" />
         </button>
         <input type="text" name="name" id="qty${item.id}" value="${item.qty}">
-        <button class="minus-btn" type="button" name="button">
-        <img src="minus.svg" alt="" />
+        <button class="minus-btn" type="button" aria-label="mbutton${item.id}">
+        <img src="./img/origin/minus.svg" alt="" />
         </button>
         </div>
 
@@ -117,7 +117,7 @@ class BaseBox {
         </div>
         </div>
         <div class="action2">
-        <span class="actionclass"><button id="editBtn${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeBtn${item.id}" class="bglessbutton">X REMOVE</button>|<button id="saveLaterBtn${item.id}" class="bglessbutton">SAVE FOR LATER</button></span>
+        <span class="actionclass"><button id="editBtnM${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeMBtn${item.id}" class="bglessbutton">X REMOVE</button>|<button id="saveLaterMBtn${item.id}" class="bglessbutton">SAVE FOR LATER</button></span>
         </div>
         <span id="span${item.id}" style="visibility:hidden">${JSON.stringify(item)}</span>`;
     }
