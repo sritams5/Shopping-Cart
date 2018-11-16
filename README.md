@@ -1,2 +1,3 @@
-# Shopping-Cart
-Shopping Cart
+# TrellowithRedux
+
+db.json needs to be used for json-server

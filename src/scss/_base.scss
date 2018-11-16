@@ -1,0 +1,29 @@
+.navbar{
+	background-color: rgba(0,0,0,.15)!important;
+}
+body{
+
+	background-color:  $backgroundColor;
+	font-family: monospace;
+	color: white;
+}
+p{
+	color: #000000;
+}
+footer ul{
+	padding: 0px;
+}
+
+footer li{
+	list-style-type: none;
+	padding: 15px;
+	display: inline;
+}
+footer {
+	   position:fixed;
+	   left:0px;
+	   bottom:0px;
+	   height:30px;
+	   width:100%;
+	   background:#999;
+}

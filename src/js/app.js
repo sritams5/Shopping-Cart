@@ -1,0 +1,14 @@
+import '../scss/app.scss';
+import '../img/origin/delete-icn.svg';
+import '../img/origin/twitter-heart.png';
+import '../img/origin/item-1.png';
+import '../img/origin/item-2.png';
+import '../img/origin/item-3.png';
+import '../img/origin/minus.svg';
+import '../img/origin/plus.svg';
+import 'jquery';
+import 'jquery-ui';
+import './baseboard/view';
+import './baseboard/controller';
+import './popover/view';
+import './popover/controller';
