@@ -4,7 +4,7 @@ import 'jquery-ui';
 import baseBox from './view';
 import popView from '../popover/view';
 import {createPopUp,addDynaValue} from '../popover/controller';
-import {loadOrders,loadPromosPerPromocode,deleteOrder} from '../service';
+import {loadOrders,loadPromosPerPromocode,deleteOrder,updateOrder} from '../service';
 async function removeOrder(event) {
     const modal =document.getElementById('myModal');
     let eventid=event.target.id;
@@ -26,7 +26,8 @@ async function calculateTotal(){
   let elementArraySize=localStorage.getItem("size");
   let price=0;
   for(let i=1;i<=Number(elementArraySize);i++){
-    price+=parseFloat(JSON.parse(document.getElementById(`span${i}`).innerHTML).price);
+    let item=JSON.parse(document.getElementById(`span${i}`).innerHTML);
+    price+=parseFloat(item.price*item.qty);
   }
     document.getElementById("totalid").innerHTML=`$${price}`;
     document.getElementById("promoid").innerHTML=`$0.00`;
@@ -70,7 +71,7 @@ async function createLanding(){
         }
       }
     });
-  $('.minus-btn').on('click', function(e) {
+  $('.minus-btn').on('click',async function(e) {
     e.preventDefault();
     var $this = $(this);
     var $input = $this.closest('div').find('input');
@@ -83,10 +84,18 @@ async function createLanding(){
     }
 
     $input.val(value);
+    let eventid=$this.attr("aria-label");
+    var thenum = eventid.replace( /^\D+/g, '');
+    console.log(thenum);
+    let jsonData = {};
+    jsonData["qty"]=value;
 
+    let response=await updateOrder(thenum,jsonData);
+    console.log("response"+response);
+    window.location.reload();
   });
 
-  $('.plus-btn').on('click', function(e) {
+  $('.plus-btn').on('click',async function(e) {
     e.preventDefault();
     var $this = $(this);
     var $input = $this.closest('div').find('input');
@@ -99,6 +108,15 @@ async function createLanding(){
     }
 
     $input.val(value);
+    let eventid=$this.attr("aria-label");
+    var thenum = eventid.replace( /^\D+/g, '');
+    console.log(thenum);
+    let jsonData = {};
+    jsonData["qty"]=value;
+
+    let response=await updateOrder(thenum,jsonData);
+    console.log("response"+response);
+    window.location.reload();
   });
 
   $('.shopping-cart').on('click', '.editBtn', showDetails);
