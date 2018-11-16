@@ -162,12 +162,12 @@ border-bottom:  1px solid #E1E8EE;
   color: #43484D;
   font-weight: 300;
 }
-/*span[class*=actionclass]:first-child {
+.actionclass :first-child {
 padding-left:0px;
-}*/
-/*span[class*=actionclass]:last-child {
+}
+.actionclass:last-child {
 padding-right:0px;
-}*/
+}
 button[class*=btn] {
   width: 30px;
   height: 30px;

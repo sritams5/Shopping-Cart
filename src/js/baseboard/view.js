@@ -45,7 +45,7 @@ class BaseBox {
     <p>ENTER PROMOTION CODE OR GIFT CARD</p>
     </div>
     <div>
-    <input type="text" id="promocodeid"></input><button class="transbutn" id="promocodeBtn">APPLY</button>
+    <input type="text" id="promocodeid"  aria-label="plabel" ></input><button class="transbutn" id="promocodeBtn">APPLY</button>
     </div>
     </div>
     <div id="costdiv">
@@ -96,8 +96,8 @@ class BaseBox {
         <div class="dynadiv" id="dynadiv${item.id}">
         <div class="description" id="description${item.id}">
         <span><b>${item.productname}</b></span>
-        <span>Style #:${item.style}</span>
-        <span>Colour :${item.colorchoosed}</span>
+        <span class="subtext">Style #:${item.style}</span>
+        <span class="subtext">Colour :${item.colorchoosed}</span>
         <span class="actionclass action1"><button id="editBtnD${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeDBtn${item.id}" class="bglessbutton removeBtn">X REMOVE</button>|<button id="saveLaterDBtn${item.id}" class="bglessbutton svlBtn">SAVE FOR LATER</button></span>
         </div>
         <div class="total-price"><p class="smalldevicep">Size:</p>${item.sizechoosed}</div>
@@ -107,7 +107,7 @@ class BaseBox {
         <button class="plus-btn" type="button" aria-label="pbutton${item.id}">
         <img src="./img/origin/plus.svg" alt="" />
         </button>
-        <input type="text" name="name" id="qty${item.id}" value="${item.qty}">
+        <input type="text" name="name${item.id}" aria-label="qlabel${item.id}" id="qty${item.id}" value="${item.qty}">
         <button class="minus-btn" type="button" aria-label="mbutton${item.id}">
         <img src="./img/origin/minus.svg" alt="" />
         </button>
