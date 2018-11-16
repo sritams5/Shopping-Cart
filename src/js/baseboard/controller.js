@@ -4,7 +4,14 @@ import 'jquery-ui';
 import baseBox from './view';
 import popView from '../popover/view';
 import {createPopUp,addDynaValue} from '../popover/controller';
-import {loadOrders,loadPromosPerPromocode} from '../service';
+import {loadOrders,loadPromosPerPromocode,deleteOrder} from '../service';
+async function removeOrder(event) {
+    const modal =document.getElementById('myModal');
+    let eventid=event.target.id;
+    var thenum = eventid.replace( /^\D+/g, '');
+    await deleteOrder(thenum);
+    window.location.reload();
+}
 async function showDetails(event) {
     const modal =document.getElementById('myModal');
     let eventid=event.target.id;
@@ -95,5 +102,6 @@ async function createLanding(){
   });
 
   $('.shopping-cart').on('click', '.editBtn', showDetails);
+  $('.shopping-cart').on('click', '.removeBtn', removeOrder);
 }
 createLanding();

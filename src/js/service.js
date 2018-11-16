@@ -39,6 +39,19 @@ data: datajson,
 
 return result;
 }
+export async function deleteOrder(id){
+  const result = await $.ajax({
+
+url: `http://localhost:3000/orderlist/${id}`,
+
+type: 'DELETE',
+
+//data: datajson,
+
+});
+
+return result;
+}
 export async function loadPromosPerPromocode(promocode){
   const result = await $.ajax({
 

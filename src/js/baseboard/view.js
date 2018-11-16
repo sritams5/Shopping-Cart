@@ -98,7 +98,7 @@ class BaseBox {
         <span><b>${item.productname}</b></span>
         <span>Style #:${item.style}</span>
         <span>Colour :${item.colorchoosed}</span>
-        <span class="actionclass action1"><button id="editBtnD${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeDBtn${item.id}" class="bglessbutton">X REMOVE</button>|<button id="saveLaterDBtn${item.id}" class="bglessbutton">SAVE FOR LATER</button></span>
+        <span class="actionclass action1"><button id="editBtnD${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeDBtn${item.id}" class="bglessbutton removeBtn">X REMOVE</button>|<button id="saveLaterDBtn${item.id}" class="bglessbutton svlBtn">SAVE FOR LATER</button></span>
         </div>
         <div class="total-price"><p class="smalldevicep">Size:</p>${item.sizechoosed}</div>
 
@@ -117,7 +117,7 @@ class BaseBox {
         </div>
         </div>
         <div class="action2">
-        <span class="actionclass"><button id="editBtnM${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeMBtn${item.id}" class="bglessbutton">X REMOVE</button>|<button id="saveLaterMBtn${item.id}" class="bglessbutton">SAVE FOR LATER</button></span>
+        <span class="actionclass"><button id="editBtnM${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeMBtn${item.id}" class="bglessbutton removeBtn">X REMOVE</button>|<button id="saveLaterMBtn${item.id}" class="bglessbutton svlBtn">SAVE FOR LATER</button></span>
         </div>
         <span id="span${item.id}" style="visibility:hidden">${JSON.stringify(item)}</span>`;
     }
