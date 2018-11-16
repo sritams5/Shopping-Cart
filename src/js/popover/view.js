@@ -97,33 +97,55 @@ class PopBox {
         }
         qtycontent.appendChild(aTag);
       }
+      qtycontent.onchange = function(){
+        document.getElementById('priceid').innerHTML=`$${this.value*itemObj.price}`;
+      };
       document.getElementById('showDetailsId').addEventListener("click", function(){
         let description=document.getElementById('pdetailsid');
-        description.style.display='block';
-        description.innerHTML=itemObj.description;
+        if(this.innerHTML=='<u>see product details</u>'){
+          description.style.display='block';
+          description.innerHTML=itemObj.description;
+          this.innerHTML='<u>hide product details</u>';
+        }else{
+          description.style.display='none';
+          description.innerHTML='';
+          this.innerHTML='<u>see product details</u>';
+        }
       });
       let colorchart=document.getElementById('colorchartid');
       colorchart.innerHTML='';
       for(let i=0;i<colors.length;i++){
         let aTag = document.createElement('button');
-        aTag.style.backgroundColor = colors[i];
-
+        //aTag.style.backgroundColor = colors[i];
+        if(colors[i]=="red"){
+          aTag.className="red";
+        }else if(colors[i]=="green"){
+          aTag.className="green";
+        }else{
+          aTag.className="blue";
+        }
         if (colors[i] == colorChoosed) {
-          aTag.style.border = "thick solid yellow";
-          aTag.style.opacity = 0.7;
+          //aTag.style.border = "thick solid yellow";
+          //aTag.style.opacity = 0.7;
+          aTag.setAttribute("class", aTag.className+" colorverityselected");
+          console.log("aTag.className="+aTag.className);
           aTag.name="selected";
         }else{
+          aTag.setAttribute("class", aTag.className+" colorveritynotselected");
+          console.log("aTag.className="+aTag.className);
           aTag.name="notselected";
         }
         aTag.addEventListener("click", function(){
             let siblings= PopBox.getSiblings(this);
             for(let i=0;i<siblings.length;i++){
-              siblings[i].style.border = "none";
-              siblings[i].style.opacity = 1;
+              // siblings[i].style.border = "none";
+              // siblings[i].style.opacity = 1;
+              siblings[i].classList.add("colorveritynotselected");
+              siblings[i].classList.remove("colorverityselected");
               siblings[i].name="notselected";
             }
-            this.style.border = "thick solid yellow";
-            this.style.opacity = 0.7;
+            this.classList.add("colorverityselected");
+            this.classList.remove("colorveritynotselected");
             this.name="selected";
         });
         colorchart.appendChild(aTag);

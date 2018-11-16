@@ -445,6 +445,23 @@ input:focus {
     justify-content:center;
   }
 }
+.colorverityselected{
+  border:thick solid yellow;
+  opacity:0.7;
+}
+.colorveritynotselected{
+  border:none;
+  opacity:1;
+}
+.red{
+  background-color:red;
+}
+.green{
+  background-color:green;
+}
+.blue{
+  background-color:blue;
+}
 /* temp css*/
 /* #item1{
     content: url('/img/origin/item-1.png');

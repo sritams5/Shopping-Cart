@@ -2,7 +2,7 @@ import 'jquery';
 import 'jquery-ui';
 
 import popBox from './view';
-import {loadPromosPerPromocode} from '../service';
+import {updateOrder} from '../service';
 
 export async function createPopUp() {
   await popBox.createPopOver();
@@ -22,13 +22,31 @@ async function addFunctionalityToPopUp(){
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
   let editbutton = document.getElementsByClassName("editcss")[0];
-  editbutton.onclick = function(event) {
+  editbutton.onclick =async function(event) {
     let id=event.target.id;
     console.log('id- '+id);
-  //$().html();
-  //$().html();
-  //$().html();
+    let size=$( "#sizecontent option:selected" ).text();
+    let qty=$( "#qtycontent option:selected" ).text();
+    //let price=(document.getElementById('priceid').innerHTML).split('$')[1];
+    let selectedcolor=document.getElementsByName("selected")[0];
+    let color = '';
+    if(selectedcolor.classList.contains("red")){
+      color="red";
+    }else if(selectedcolor.classList.contains("green")){
+      color="green";
+    }else{
+      color="blue";
+    }
+    let jsonData = {};
+    jsonData["colorchoosed"]=color;
+    jsonData["sizechoosed"]=size;
+    jsonData["qty"]=qty;
+    //jsonData["price"]=price;
+    console.log(size+" "+qty+" "+color+" "+jsonData);
+    let response=await updateOrder(id,jsonData);
+    console.log("response"+response);
     modal.style.display = "none";
+    window.location.reload();
   }
   // When the user clicks the button, open the modal
   //btn.onclick = function() {
@@ -36,7 +54,28 @@ async function addFunctionalityToPopUp(){
   //}
   // When the user clicks on <span> (x), close the modal
   span.onclick = function() {
-    modal.style.display = "none";
+    let shbtn=document.getElementById('showDetailsId');
+    let description=document.getElementById('pdetailsid');
+    let spanid='span'+editbutton.id;
+    console.log("spanid-"+spanid);
+    let item=document.getElementById(spanid).innerHTML;
+    let itemObj = JSON.parse(item);
+
+      description.style.display='none';
+      description.innerHTML='';
+      shbtn.innerHTML='<u>see product details</u>';
+    shbtn.addEventListener("click", function(){
+      if(shbtn.innerHTML=='<u>see product details</u>'){
+        description.style.display='block';
+        description.innerHTML=itemObj.description;
+        shbtn.innerHTML='<u>hide product details</u>';
+      }else{
+        description.style.display='none';
+        description.innerHTML='';
+        shbtn.innerHTML='<u>see product details</u>';
+      }
+    });
+      modal.style.display = "none";
   }
   // $( ".close" ).click(function() {
   //   modal.style.display = "none";
