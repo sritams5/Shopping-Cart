@@ -2,68 +2,68 @@ import $ from 'jquery';
 export async function loadOrders(){
   const result = await $.ajax({
 
-url: `http://localhost:3000/orderlist`,
+    url: `http://localhost:3000/orderlist`,
 
-type: 'GET',
+    type: 'GET',
 
-// data: {varName : varValue},
+    // data: {varName : varValue},
 
-});
+  });
 
-return result;
+  return result;
 }
 export async function loadPromos(){
   const result = await $.ajax({
 
-url: `http://localhost:3000/promolist`,
+    url: `http://localhost:3000/promolist`,
 
-type: 'GET',
+    type: 'GET',
 
-// data: {varName : varValue},
+    // data: {varName : varValue},
 
-});
+  });
 
-return result;
+  return result;
 }
 
 export async function updateOrder(id,datajson){
   const result = await $.ajax({
 
-url: `http://localhost:3000/orderlist/${id}`,
+    url: `http://localhost:3000/orderlist/${id}`,
 
-type: 'PATCH',
+    type: 'PATCH',
 
-data: datajson,
+    data: datajson,
 
-});
+  });
 
-return result;
+  return result;
 }
 export async function deleteOrder(id){
   const result = await $.ajax({
 
-url: `http://localhost:3000/orderlist/${id}`,
+    url: `http://localhost:3000/orderlist/${id}`,
 
-type: 'DELETE',
+    type: 'DELETE',
 
-//data: datajson,
+    //data: datajson,
 
-});
+  });
 
-return result;
+  return result;
 }
 export async function loadPromosPerPromocode(promocode){
   const result = await $.ajax({
 
-url: `http://localhost:3000/promolist?promocode=${promocode}`,
+    url: `http://localhost:3000/promolist?promocode=${promocode}`,
 
-type: 'GET',
+    type: 'GET',
 
-// data: {varName : varValue},
+    // data: {varName : varValue},
 
-});
+  });
 
-return result;
+  return result;
 }
 function saveBoardsData(boards) {
   $.ajax('http://localhost:3000/boards/', {

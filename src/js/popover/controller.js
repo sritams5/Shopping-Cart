@@ -61,9 +61,9 @@ async function addFunctionalityToPopUp(){
     let item=document.getElementById(spanid).innerHTML;
     let itemObj = JSON.parse(item);
 
-      description.style.display='none';
-      description.innerHTML='';
-      shbtn.innerHTML='<u>see product details</u>';
+    description.style.display='none';
+    description.innerHTML='';
+    shbtn.innerHTML='<u>see product details</u>';
     shbtn.addEventListener("click", function(){
       if(shbtn.innerHTML=='<u>see product details</u>'){
         description.style.display='block';
@@ -75,7 +75,7 @@ async function addFunctionalityToPopUp(){
         shbtn.innerHTML='<u>see product details</u>';
       }
     });
-      modal.style.display = "none";
+    modal.style.display = "none";
   }
   // $( ".close" ).click(function() {
   //   modal.style.display = "none";

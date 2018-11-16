@@ -54,8 +54,8 @@ class PopBox {
       var sibling = elem.parentNode.firstChild;
       var skipMe = elem;
       for ( ; sibling; sibling = sibling.nextSibling )
-         if ( sibling.nodeType == 1 && sibling != elem )
-            siblings.push( sibling );
+      if ( sibling.nodeType == 1 && sibling != elem )
+      siblings.push( sibling );
       return siblings;
     }
     async addDynaValue(jsonelement){
@@ -136,21 +136,21 @@ class PopBox {
           aTag.name="notselected";
         }
         aTag.addEventListener("click", function(){
-            let siblings= PopBox.getSiblings(this);
-            for(let i=0;i<siblings.length;i++){
-              // siblings[i].style.border = "none";
-              // siblings[i].style.opacity = 1;
-              siblings[i].classList.add("colorveritynotselected");
-              siblings[i].classList.remove("colorverityselected");
-              siblings[i].name="notselected";
-            }
-            this.classList.add("colorverityselected");
-            this.classList.remove("colorveritynotselected");
-            this.name="selected";
+          let siblings= PopBox.getSiblings(this);
+          for(let i=0;i<siblings.length;i++){
+            // siblings[i].style.border = "none";
+            // siblings[i].style.opacity = 1;
+            siblings[i].classList.add("colorveritynotselected");
+            siblings[i].classList.remove("colorverityselected");
+            siblings[i].name="notselected";
+          }
+          this.classList.add("colorverityselected");
+          this.classList.remove("colorveritynotselected");
+          this.name="selected";
         });
         colorchart.appendChild(aTag);
+      }
     }
-  }
     async createPopOver(){
       this.parent.innerHTML = '';
       this.parent.appendChild(PopBox.createPopOverElement());

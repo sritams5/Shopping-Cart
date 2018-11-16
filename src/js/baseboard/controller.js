@@ -6,43 +6,47 @@ import popView from '../popover/view';
 import {createPopUp,addDynaValue} from '../popover/controller';
 import {loadOrders,loadPromosPerPromocode,deleteOrder,updateOrder} from '../service';
 async function removeOrder(event) {
-    const modal =document.getElementById('myModal');
-    let eventid=event.target.id;
-    var thenum = eventid.replace( /^\D+/g, '');
-    await deleteOrder(thenum);
-    window.location.reload();
+  const modal =document.getElementById('myModal');
+  let eventid=event.target.id;
+  var thenum = eventid.replace( /^\D+/g, '');
+  await deleteOrder(thenum);
+  window.location.reload();
 }
 async function showDetails(event) {
-    const modal =document.getElementById('myModal');
-    let eventid=event.target.id;
-    var thenum = eventid.replace( /^\D+/g, '');
-    let spanid='span'+thenum;
-    console.log("spanid-"+spanid);
-    let item=document.getElementById(spanid).innerHTML;
-    await addDynaValue(item);
-    modal.style.display = "block";
+  const modal =document.getElementById('myModal');
+  let eventid=event.target.id;
+  var thenum = eventid.replace( /^\D+/g, '');
+  let spanid='span'+thenum;
+  console.log("spanid-"+spanid);
+  let item=document.getElementById(spanid).innerHTML;
+  await addDynaValue(item);
+  modal.style.display = "block";
 }
 async function calculateTotal(){
-  let elementArraySize=localStorage.getItem("size");
+  let orderArray=JSON.parse(localStorage.getItem("orderArray"));
+  //console.log(orderArray);
   let price=0;
-  for(let i=1;i<=Number(elementArraySize);i++){
-    let item=JSON.parse(document.getElementById(`span${i}`).innerHTML);
+  for(let i=0;i<orderArray.length;i++){
+    let itemObj=orderArray[i];
+    let span='span'+itemObj.id;
+    let item=JSON.parse(document.getElementById(span).innerHTML);
     price+=parseFloat(item.price*item.qty);
   }
-    document.getElementById("totalid").innerHTML=`$${price}`;
-    document.getElementById("promoid").innerHTML=`$0.00`;
-    if(price<50){
-      document.getElementById("shipcid").innerHTML=`$0.00`;
-      document.getElementById("finalid").innerHTML=`$${price}`;
-    }
-    else {
-      document.getElementById("shipcid").innerHTML=`$37.00`;
-      document.getElementById("finalid").innerHTML=`$${price+37}`;
-    }
+  document.getElementById("totalid").innerHTML=`$${price}`;
+  document.getElementById("promoid").innerHTML=`$0.00`;
+  if(price>50){
+    document.getElementById("shipcid").innerHTML=`$0.00`;
+    document.getElementById("qshipp").style.display='block';
+    document.getElementById("finalid").innerHTML=`$${price}`;
+  }
+  else {
+    document.getElementById("shipcid").innerHTML=`$37.00`;
+    document.getElementById("finalid").innerHTML=`$${price+37}`;
+  }
 }
 async function createLanding(){
   const orderArray=await loadOrders();
-  //console.log(orderArray);
+  localStorage.setItem("orderArray",JSON.stringify(orderArray));
   await baseBox.createBase(orderArray);
   await createPopUp();
   await calculateTotal();
@@ -53,24 +57,24 @@ async function createLanding(){
     let promoamount=0;
     console.log(pvalue);
 
-      if(pvalue==""||pvalue==undefined){
-        ele.readOnly = false;
+    if(pvalue==""||pvalue==undefined){
+      ele.readOnly = false;
+    }else{
+      ele.readOnly = true;
+      const promoC=await loadPromosPerPromocode(pvalue);
+      if(promoC.length>0){
+        promoamount=promoC[0].amount;
+        console.log(promoamount);
+        $("#promoid").html(`$${promoamount}`);
+        let priceBeforePromo=parseFloat(($("#finalid").html()).split("$")[1]);
+        $("#finalid").html(`$${priceBeforePromo-promoamount}`);
       }else{
-        ele.readOnly = true;
-        const promoC=await loadPromosPerPromocode(pvalue);
-        if(promoC.length>0){
-          promoamount=promoC[0].amount;
-          console.log(promoamount);
-          $("#promoid").html(`$${promoamount}`);
-          let priceBeforePromo=parseFloat(($("#finalid").html()).split("$")[1]);
-          $("#finalid").html(`$${priceBeforePromo-promoamount}`);
-        }else{
-          ele.value="";
-          ele.readOnly = false;
-          alert("Invalid Promo Code!!!");
-        }
+        ele.value="";
+        ele.readOnly = false;
+        alert("Invalid Promo Code!!!");
       }
-    });
+    }
+  });
   $('.minus-btn').on('click',async function(e) {
     e.preventDefault();
     var $this = $(this);

@@ -60,7 +60,7 @@ class BaseBox {
     <div id="shippingcostdiv" class="totalc">
     <div>
     <p><h5>ESTIMATED SHIPPING</h5>
-    <span class="subtext">you qualify for free shipping because your order is abhove $50*</span></p>
+    <span class="subtext" id="qshipp" style="display:none;">you qualify for free shipping because your order is abhove $50*</span></p>
     </div>
     <div><p><h5 id="shipcid">$37.00</h5></p></div>
     </div>
@@ -90,42 +90,41 @@ class BaseBox {
     for(var i=0;i<orderArray.length;i++){
       let item=orderArray[i];
       htmlString+=`<div class="item">
-        <div class="image" id="image${item.id}">
-        <img id="item${item.id}" src ="${item.productimg}"alt="" />
-        </div>
-        <div class="dynadiv" id="dynadiv${item.id}">
-        <div class="description" id="description${item.id}">
-        <span><b>${item.productname}</b></span>
-        <span class="subtext">Style #:${item.style}</span>
-        <span class="subtext">Colour :${item.colorchoosed}</span>
-        <span class="actionclass action1"><button id="editBtnD${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeDBtn${item.id}" class="bglessbutton removeBtn">X REMOVE</button>|<button id="saveLaterDBtn${item.id}" class="bglessbutton svlBtn">SAVE FOR LATER</button></span>
-        </div>
-        <div class="total-price"><p class="smalldevicep">Size:</p>${item.sizechoosed}</div>
+      <div class="image" id="image${item.id}">
+      <img id="item${item.id}" src ="${item.productimg}"alt="" />
+      </div>
+      <div class="dynadiv" id="dynadiv${item.id}">
+      <div class="description" id="description${item.id}">
+      <span><b>${item.productname}</b></span>
+      <span class="subtext">Style #:${item.style}</span>
+      <span class="subtext">Colour :${item.colorchoosed}</span>
+      <span class="actionclass action1"><button id="editBtnD${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeDBtn${item.id}" class="bglessbutton removeBtn">X REMOVE</button>|<button id="saveLaterDBtn${item.id}" class="bglessbutton svlBtn">SAVE FOR LATER</button></span>
+      </div>
+      <div class="total-price"><p class="smalldevicep">Size:</p>${item.sizechoosed}</div>
 
-        <div class="quantity">
-        <p class="smalldevicep">QTY:</p>
-        <button class="plus-btn" type="button" aria-label="pbutton${item.id}">
-        <img src="./img/origin/plus.svg" alt="" />
-        </button>
-        <input type="text" name="name${item.id}" aria-label="qlabel${item.id}" id="qty${item.id}" value="${item.qty}">
-        <button class="minus-btn" type="button" aria-label="mbutton${item.id}">
-        <img src="./img/origin/minus.svg" alt="" />
-        </button>
-        </div>
+      <div class="quantity">
+      <p class="smalldevicep">QTY:</p>
+      <button class="plus-btn" type="button" aria-label="pbutton${item.id}">
+      <img src="./img/origin/plus.svg" alt="" />
+      </button>
+      <input type="text" name="name${item.id}" aria-label="qlabel${item.id}" id="qty${item.id}" value="${item.qty}">
+      <button class="minus-btn" type="button" aria-label="mbutton${item.id}">
+      <img src="./img/origin/minus.svg" alt="" />
+      </button>
+      </div>
 
-        <div class="total-price">$${item.price*item.qty}</div>
-        </div>
-        </div>
-        <div class="action2">
-        <span class="actionclass"><button id="editBtnM${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeMBtn${item.id}" class="bglessbutton removeBtn">X REMOVE</button>|<button id="saveLaterMBtn${item.id}" class="bglessbutton svlBtn">SAVE FOR LATER</button></span>
-        </div>
-        <span id="span${item.id}" style="visibility:hidden">${JSON.stringify(item)}</span>`;
+      <div class="total-price">$${item.price*item.qty}</div>
+      </div>
+      </div>
+      <div class="action2">
+      <span class="actionclass"><button id="editBtnM${item.id}" class="bglessbutton editBtn">EDIT</button>|<button id="removeMBtn${item.id}" class="bglessbutton removeBtn">X REMOVE</button>|<button id="saveLaterMBtn${item.id}" class="bglessbutton svlBtn">SAVE FOR LATER</button></span>
+      </div>
+      <span id="span${item.id}" style="visibility:hidden">${JSON.stringify(item)}</span>`;
     }
     return htmlString;
   }
-async  createBase(orderArray){
+  async  createBase(orderArray){
     let orderArraySize=orderArray.length;
-    localStorage.setItem("size",orderArraySize);
     console.log(orderArraySize);
     let htmlString=await BaseBox.createHtmlString(orderArray);
     this.parent.innerHTML = '';

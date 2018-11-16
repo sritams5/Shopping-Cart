@@ -1,0 +1,510 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  margin: 0;
+  background-color: #7EC855;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.shopping-cart {
+  width: 900px;
+  /*750px;*/
+  height: auto;
+  /*423px;*/
+  margin: 80px auto;
+  background: #FFFFFF;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  height: 60px;
+  border-bottom: 1px solid #E1E8EE;
+  /*1px solid #E1E8EE;*/
+  padding: 20px 30px;
+  color: #5E6977;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.thead {
+  height: auto;
+  border-bottom: 4px solid #E1E8EE;
+  /*1px solid #E1E8EE;*/
+  padding: 10px 20px;
+  color: #5E6977;
+  display: flex;
+}
+
+.total {
+  height: auto;
+  border-top: 4px solid #E1E8EE;
+  /*1px solid #E1E8EE;*/
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  &:nth-of-type(1) {
+    flex-grow: 1;
+    flex-direction: row;
+  }
+  &:nth-of-type(2) {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.itemcontainer {
+  display: block;
+  border-bottom: 1px solid #E1E8EE;
+}
+
+.item {
+  padding: 20px 30px;
+  height: 120px;
+  display: flex;
+  /*newly added*/
+}
+
+.dynadiv {
+  display: flex;
+}
+
+.subtext {
+  opacity: 0.5;
+}
+
+/* Buttons -  Delete and Like */
+
+.buttons {
+  position: relative;
+  padding-top: 30px;
+  margin-right: 60px;
+}
+
+.is-active {
+  animation-name: animate;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+  animation-timing-function: steps(28);
+  animation-fill-mode: forwards;
+}
+
+@keyframes animate {
+  0% {
+    background-position: left;
+  }
+
+  50% {
+    background-position: right;
+  }
+
+  100% {
+    background-position: right;
+  }
+}
+
+
+/* Product Image */
+
+.image {
+  margin-right: 50px;
+}
+
+/* Product Description */
+
+.description {
+  padding-top: 10px;
+  margin-right: 60px;
+  width: 265px;
+  /*115px;*/
+  span {
+    display: block;
+    font-size: 14px;
+    color: #43484D;
+    font-weight: 400;
+    &:first-child {
+      margin-bottom: 5px;
+    }
+    &:last-child {
+      font-weight: 300;
+      margin-top: 8px;
+      color: #86939E;
+    }
+  }
+}
+
+/* Product Quantity */
+
+.quantity {
+  padding-top: 20px;
+  margin-right: 60px;
+  input {
+    -webkit-appearance: none;
+    border: none;
+    text-align: center;
+    width: 32px;
+    font-size: 16px;
+    color: #43484D;
+    font-weight: 300;
+  }
+}
+
+.actionclass {
+  :first-child {
+    padding-left: 0px;
+  }
+  &:last-child {
+    padding-right: 0px;
+  }
+}
+
+button[class*=btn] {
+  width: 30px;
+  height: 30px;
+  background-color: #E1E8EE;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.minus-btn img {
+  margin-bottom: 3px;
+  content: url('/img/origin/minus.svg');
+}
+
+.plus-btn img {
+  margin-top: 2px;
+  content: url('/img/origin/plus.svg');
+}
+
+button:focus, input:focus {
+  outline: 0;
+}
+
+/* Total Price */
+
+.total-price {
+  width: 83px;
+  padding-top: 27px;
+  text-align: center;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+  display: block;
+}
+
+.bglessbutton {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.totalc {
+  display: flex;
+  justify-content: space-between;
+  div:last-child {
+    display: flex;
+    align-items: center;
+  }
+}
+
+#finalsubmit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#submitdiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  font-weight: 400;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.transbutn {
+  background: transparent;
+}
+
+/* The Modal (background) */
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content */
+
+.modal-content {
+  display: block;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%;
+}
+
+/* The Close Button */
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  &:hover, &:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.modal-items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.item1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-top: 4px solid #E1E8EE;
+}
+
+.item2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colorchart {
+  display: flex;
+  > button {
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+  }
+}
+
+.sizeqty {
+  display: flex;
+}
+
+.smalldevicep {
+  display: none;
+}
+
+.action1 {
+  display: block;
+}
+
+.action2 {
+  display: none;
+}
+
+/* Style The Dropdown Button */
+
+.dropbutns {
+  background-color: transparent;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+}
+
+/* Links inside the dropdown */
+
+/* Change color of dropdown links on hover */
+
+/* Show the dropdown menu on hover */
+
+.dropdown:hover {
+  .dropdown-content {
+    display: block;
+  }
+  .dropbtn {
+    background-color: #3e8e41;
+  }
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+
+/* Responsive */
+@media (max-width: 800px) {
+  .shopping-cart {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  .itemcontainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .item {
+    height: auto;
+    align-items: center;
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+  }
+  .dynadiv {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .thead {
+    display: none;
+  }
+  .action2 {
+    display: block !important;
+    text-align: center;
+  }
+  .action1 {
+    display: none !important;
+  }
+  .image {
+    img {
+      width: 100%;
+    }
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+  }
+  .quantity, .description {
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+  }
+  .buttons {
+    margin-right: 20px;
+  }
+  .helpsec {
+    display: none;
+  }
+  .total {
+    display: initial;
+    font-size: 60%;
+  }
+  #promodiv {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .smalldevicep {
+    display: block;
+  }
+  .modal-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .dropbutns {
+    font-size: 70%;
+  }
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .total-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.colorverityselected {
+  border: thick solid yellow;
+  opacity: 0.7;
+}
+
+.colorveritynotselected {
+  border: none;
+  opacity: 1;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
