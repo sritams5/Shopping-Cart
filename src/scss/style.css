@@ -291,10 +291,10 @@ input:focus {
   justify-content: center;
   align-items:center;
 }
-.sizechart{
+.colorchart{
   display:flex;
 }
-.sizechart > button{
+.colorchart > button{
   width:25px;
   height:25px;
   margin:5px;
@@ -446,7 +446,7 @@ input:focus {
   }
 }
 /* temp css*/
-#item1{
+/* #item1{
     content: url('/img/origin/item-1.png');
 }
 #item2{
@@ -454,7 +454,7 @@ input:focus {
 }
 #item3{
     content: url('/img/origin/item-3.png');
-}
-.item2 img{
+} */
+/* .item2 img{
   content: url('/img/origin/item-1.png');
-}
+} */

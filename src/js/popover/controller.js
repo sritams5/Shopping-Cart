@@ -3,11 +3,14 @@ import 'jquery-ui';
 
 import popBox from './view';
 
-export function createPopUp() {
-  popBox.createPopOver();
-  addFunctionalityToPopUp();
+export async function createPopUp() {
+  await popBox.createPopOver();
+  await addFunctionalityToPopUp();
 }
-function addFunctionalityToPopUp(){
+export async function addDynaValue(item){
+  await popBox.addDynaValue(item);
+}
+async function addFunctionalityToPopUp(){
   //$('.shopping-cart').on('click', '.editBtn', showDetails);
   // Get the modal
   var modal = document.getElementById('myModal');
