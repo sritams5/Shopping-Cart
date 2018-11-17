@@ -205,10 +205,11 @@ button:focus, input:focus {
 }
 
 .bglessbutton {
-  background-color: white;//Transparent;
-  color: hsla(200,0%,0%,.7);
+  background-color: cyan;//Transparent;
+  color: green;//hsla(200,0%,0%,.7);
   background-repeat: no-repeat;
-  border: none;
+  border: 1px solid blue;
+  border-radius: 2px;
   cursor: pointer;
   overflow: hidden;
   outline: none;
