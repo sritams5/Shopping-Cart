@@ -80,7 +80,8 @@ html, body {
 }
 
 .subtext {
-  opacity: 0.5;
+  color: blue;
+  opacity: 0.7;
 }
 
 /* Buttons -  Delete and Like */
@@ -130,7 +131,7 @@ html, body {
   span {
     display: block;
     font-size: 14px;
-    color: #43484D;
+    //color: #43484D;
     font-weight: 400;
     &:first-child {
       margin-bottom: 5px;
@@ -204,14 +205,24 @@ button:focus, input:focus {
 }
 
 .bglessbutton {
-  background-color: Transparent;
+  background-color: white;//Transparent;
+  color: hsla(200,0%,0%,.7);
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
   overflow: hidden;
   outline: none;
 }
-
+#promocodeid{
+    box-sizing: border-box;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+#promocodeid:hover{
+  box-sizing: border-box;
+  border: 1px solid blue;
+  border-radius: 4px;
+}
 .totalc {
   display: flex;
   justify-content: space-between;
@@ -234,8 +245,8 @@ button:focus, input:focus {
 
 .buttons-primary {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: blue;//#007bff;
+  border-color: blue;//#007bff;
   font-weight: 400;
   border: 1px solid transparent;
   padding: .375rem .75rem;
@@ -401,6 +412,7 @@ button:focus, input:focus {
 
 /* Responsive */
 @media (max-width: 800px) {
+//@media only screen and (max-width: 600px) {
   .shopping-cart {
     width: 100%;
     height: auto;
@@ -435,7 +447,7 @@ button:focus, input:focus {
     img {
       width: 100%;
     }
-    width: 100%;
+    width: 50%;
     text-align: center;
     margin: 6px 0;
   }
@@ -443,6 +455,10 @@ button:focus, input:focus {
     width: 100%;
     text-align: center;
     margin: 6px 0;
+    padding-top: 0px;
+  }
+  .total-price{
+    padding-top: 0px;
   }
   .buttons {
     margin-right: 20px;
