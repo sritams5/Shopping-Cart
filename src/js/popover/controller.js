@@ -3,7 +3,7 @@ import 'jquery-ui';
 
 import popBox from './view';
 import {updateOrder} from '../service';
-
+import {createLanding} from '../baseboard/controller';
 export async function createPopUp() {
   await popBox.createPopOver();
   await addFunctionalityToPopUp();
@@ -46,7 +46,7 @@ async function addFunctionalityToPopUp(){
     let response=await updateOrder(id,jsonData);
     console.log("response"+response);
     modal.style.display = "none";
-    window.location.reload();
+    await createLanding();
   }
   // When the user clicks the button, open the modal
   //btn.onclick = function() {

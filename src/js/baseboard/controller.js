@@ -10,8 +10,8 @@ async function removeOrder(event) {
   let eventid=event.target.id;
   var thenum = eventid.replace( /^\D+/g, '');
   await deleteOrder(thenum);
-  window.location.reload();
-}
+    await createLanding();
+  }
 async function showDetails(event) {
   const modal =document.getElementById('myModal');
   let eventid=event.target.id;
@@ -44,7 +44,7 @@ async function calculateTotal(){
     document.getElementById("finalid").innerHTML=`$${price+37}`;
   }
 }
-async function createLanding(){
+export async function createLanding(){
   const orderArray=await loadOrders();
   localStorage.setItem("orderArray",JSON.stringify(orderArray));
   await baseBox.createBase(orderArray);
@@ -96,7 +96,7 @@ async function createLanding(){
 
     let response=await updateOrder(thenum,jsonData);
     console.log("response"+response);
-    window.location.reload();
+    await createLanding();
   });
 
   $('.plus-btn').on('click',async function(e) {
@@ -120,7 +120,7 @@ async function createLanding(){
 
     let response=await updateOrder(thenum,jsonData);
     console.log("response"+response);
-    window.location.reload();
+    await createLanding();
   });
 
   $('.shopping-cart').on('click', '.editBtn', showDetails);
