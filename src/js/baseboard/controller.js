@@ -104,17 +104,21 @@ export async function createLanding(){
     var $this = $(this);
     var $input = $this.closest('div').find('input');
     var value = parseInt($input.val());
-
-    if (value < 100) {
-      value = value + 1;
-    } else {
-      value =100;
-    }
-
-    $input.val(value);
     let eventid=$this.attr("aria-label");
     var thenum = eventid.replace( /^\D+/g, '');
     console.log(thenum);
+    let spanid='span'+thenum;
+    console.log("spanid-"+spanid);
+    let item=document.getElementById(spanid).innerHTML;
+    let itemObj = JSON.parse(item);
+    if (value < itemObj.qtyavailable) {
+      value = value + 1;
+    } else {
+      value =itemObj.qtyavailable;
+      alert(`A total of ${itemObj.qtyavailable} items available for this product!!!`);
+    }
+
+    $input.val(value);
     let jsonData = {};
     jsonData["qty"]=value;
 
