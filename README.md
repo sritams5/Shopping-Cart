@@ -6,4 +6,4 @@ To start this project use command
 
 npm install
 
-npm run server
+npm run serve
