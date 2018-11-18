@@ -65,10 +65,3 @@ export async function loadPromosPerPromocode(promocode){
 
   return result;
 }
-function saveBoardsData(boards) {
-  $.ajax('http://localhost:3000/boards/', {
-    type: 'POST',
-    async: false,
-    data: { data: JSON.stringify(boards) },
-  });
-}

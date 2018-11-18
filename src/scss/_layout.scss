@@ -1,15 +1,16 @@
-#boardList{
-	min-height: 400px;
+.shopping-cart {
+  width: 900px;
+  /*750px;*/
+  height: auto;
+  /*423px;*/
+  margin: 80px auto;
+  background: #FFFFFF;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
 }
-#boardDetails{
-	min-height: 400px;	
-}
-
-@media (min-width: 768px) {
-	#boardList{
-		min-height: 600px;
-	}
-	#boardDetails{
-		min-height: 600px;	
-	}
+.itemcontainer {
+  display: block;
+  border-bottom: 1px solid #E1E8EE;
 }

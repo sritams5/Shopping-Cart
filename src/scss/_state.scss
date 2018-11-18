@@ -1,3 +1,92 @@
-#myTrelloLogo:hover{
-	text-decoration: underline;
+/* Responsive */
+@media (max-width: 800px) {
+//@media only screen and (max-width: 600px) {
+  .shopping-cart {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  .itemcontainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .item {
+    height: auto;
+    align-items: center;
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+  }
+  .dynadiv {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .thead {
+    display: none;
+  }
+  .action2 {
+    display: block !important;
+    text-align: center;
+  }
+  .action1 {
+    display: none !important;
+  }
+  .image {
+    img {
+      width: 100%;
+    }
+    width: 50%;
+    text-align: center;
+    margin: 6px 0;
+  }
+  .quantity, .description {
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+    padding-top: 0px;
+  }
+  .total-price{
+    padding-top: 0px;
+  }
+  .buttons {
+    margin-right: 20px;
+  }
+  .helpsec {
+    display: none;
+  }
+  .total {
+    display: initial;
+    font-size: 60%;
+  }
+  #promodiv {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .smalldevicep {
+    display: block;
+  }
+  .modal-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .dropbutns {
+    font-size: 70%;
+  }
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .total-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
