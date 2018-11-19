@@ -1,17 +1,17 @@
 import 'jquery';
 import 'jquery-ui';
-
+import '../../../node_modules/jquery-ui/ui/widgets/autocomplete';
 import baseBox from './view';
 import popView from '../popover/view';
 import {createPopUp,addDynaValue} from '../popover/controller';
-import {loadOrders,loadPromosPerPromocode,deleteOrder,updateOrder} from '../service';
+import {loadOrders,loadPromosPerPromocode,loadPromos,deleteOrder,updateOrder} from '../service';
 async function removeOrder(event) {
   const modal =document.getElementById('myModal');
   let eventid=event.target.id;
   var thenum = eventid.replace( /^\D+/g, '');
   await deleteOrder(thenum);
-    await createLanding();
-  }
+  await createLanding();
+}
 async function showDetails(event) {
   const modal =document.getElementById('myModal');
   let eventid=event.target.id;
@@ -126,7 +126,14 @@ export async function createLanding(){
     console.log("response"+response);
     await createLanding();
   });
-
+  let promoObj = await loadPromos();
+  var availableTags = [];
+  for(let i=0;i<promoObj.length;i++){
+    availableTags.push(promoObj[i].promocode);
+  }
+  $( "#promocodeid" ).autocomplete({
+    source: availableTags
+  });
   $('.shopping-cart').on('click', '.editBtn', showDetails);
   $('.shopping-cart').on('click', '.removeBtn', removeOrder);
 }
